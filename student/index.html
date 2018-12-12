@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Beadandó</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/index.js"></script>
+</head>
+<div>
+    <p align="right">Gergő Szanyi (uabcl2) WebTech_I_HomeWork</p>
+    <h1>Menu</h1>
+    <div class="vertical_menu">
+        <button class="button" onclick="home()">Home</button>
+        <button class="button" onclick="manufacturers()">Manufacturers</button>
+        <button class="button" onclick="cars()">Cars</button>
+        <button class="button" onclick="manufacturer()">Cars List By Manufacturers</button>
+        <button class="button" onclick="addCar()">Add Car</button>
+        <button class="button" onclick="addManufacturer()">Add Manufacturer</button>
+    </div>
+    <div class="container">
+        <div id="cars" align="center" class="inlineDiv" hidden></div>
+
+        <div id="manufacturers" align="center" class="inlineDiv" hidden></div>
+
+        <div id="manufacturer" align="center" class="inlineDiv" hidden></div>
+
+
+        <div id="addManufacturers" align="center">
+            <form id="addManufacturerForm" action="/addManufacturers" hidden>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Add manufacturer</th>
+                    </tr>
+                    <tbody>
+                    <tr>
+                        <th>Name</th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input type="text" class="controller" id="manufacturerName">
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>Country</th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input type="text" class="controller" id="manufacturerCountry">
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>Founded</th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input type="date" class="controller" id="manufacturerFounded">
+                        </th>
+                    </tr>
+                    <tr>
+                        <th><button class="submit" id="saveManufacturerButton">Submit</button></th>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <form action="/addCar" id="addCarsForm" hidden>
+            <table>
+                <thead>
+                <tr>
+                    <th colspan='3'>Add Car </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>
+                        Name:
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="text" class="col" id="carName" required placeholder="Supra">
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        Consumption(L/100KM):
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="number" class="col" id="carConsumption" required placeholder="10">
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        Color:
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="text" class="col" id="carColor">
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        Manufacturer:
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <select id="carManufacturer" class="col"></select>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        Available:
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="number" class="col" name="carAvailable" required>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        Year:
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="number" class="col" id="carYear" required placeholder="10">
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        Horsepower:
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="number" class="col" id="carHorsepower" required placeholder="5">
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="5">
+                        <button class="submit" id="submitCar">Submit</button>
+                    </th>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
