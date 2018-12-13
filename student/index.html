@@ -10,20 +10,22 @@
 <div>
     <p align="right">Gergő Szanyi (uabcl2) WebTech_I_HomeWork</p>
     <h1>Menu</h1>
+    <div class="menu">
     <div class="vertical_menu">
-        <button class="button" onclick="home()">Home</button>
+        <button class="button" onclick="Start()">Starting Status</button>
         <button class="button" onclick="manufacturers()">Manufacturers</button>
         <button class="button" onclick="cars()">Cars</button>
         <button class="button" onclick="manufacturer()">Cars List By Manufacturers</button>
         <button class="button" onclick="addCar()">Add Car</button>
         <button class="button" onclick="addManufacturer()">Add Manufacturer</button>
     </div>
+    </div>
     <div class="container">
-        <div id="cars" align="center" class="inlineDiv" hidden></div>
+        <div id="cars" align="center" hidden></div>
 
-        <div id="manufacturers" align="center" class="inlineDiv" hidden></div>
+        <div id="manufacturers" align="center" hidden></div>
 
-        <div id="manufacturer" align="center" class="inlineDiv" hidden></div>
+        <div id="manufacturer" align="center" hidden></div>
 
 
         <div id="addManufacturers" align="center">
@@ -80,7 +82,7 @@
                 </tr>
                 <tr>
                     <th>
-                        <input type="text" class="col" id="carName" required placeholder="Supra">
+                        <input type="text" id="carName" required>
                     </th>
                 </tr>
                 <tr>
@@ -90,7 +92,7 @@
                 </tr>
                 <tr>
                     <th>
-                        <input type="number" class="col" id="carConsumption" required placeholder="10">
+                        <input type="number" id="carConsumption" required>
                     </th>
                 </tr>
                 <tr>
@@ -100,7 +102,7 @@
                 </tr>
                 <tr>
                     <th>
-                        <input type="text" class="col" id="carColor">
+                        <input type="text" id="carColor">
                     </th>
                 </tr>
                 <tr>
@@ -110,7 +112,7 @@
                 </tr>
                 <tr>
                     <th>
-                        <select id="carManufacturer" class="col"></select>
+                        <select id="carManufacturer"></select>
                     </th>
                 </tr>
                 <tr>
@@ -120,7 +122,7 @@
                 </tr>
                 <tr>
                     <th>
-                        <input type="number" class="col" name="carAvailable" required>
+                        <input type="number" name="carAvailable" required>
                     </th>
                 </tr>
                 <tr>
@@ -130,7 +132,7 @@
                 </tr>
                 <tr>
                     <th>
-                        <input type="number" class="col" id="carYear" required placeholder="10">
+                        <input type="number" id="carYear" required>
                     </th>
                 </tr>
                 <tr>
@@ -140,7 +142,7 @@
                 </tr>
                 <tr>
                     <th>
-                        <input type="number" class="col" id="carHorsepower" required placeholder="5">
+                        <input type="number" id="carHorsepower" required>
                     </th>
                 </tr>
                 <tr>

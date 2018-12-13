@@ -6,25 +6,21 @@ body{
     height: 100%;
     align: center;
 }
-input, select{
+input, select {
     background-color: #ffffff;
     border-color: #000000;
 }
-.box h1{
-    margin: 0;
-    padding: 0;
-}
+
 .vertical_menu button{
     background-color: #333333;
     border: 1px solid grey;
     color: #ffffff;
-    display: inline-block;
+    display: inline-flex;
     padding: 12px 20px;
-    text-decoration: aliceblue;
     cursor: pointer;
     width: 200px;
     height: 100px;
-    font-size: 10px;
+    font-size: 20px;
 }
 .vertical_menu button:Hover{
     background-color: black;

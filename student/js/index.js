@@ -1,10 +1,40 @@
-function home(){
+function Start(){
     $("#cars").hide();
     $("#manufacturers").hide();
     $("#addCarsForm").hide();
     $("#addManufacturerForm").hide();
     $("#manufacturer").hide();
-    //$('#index').show();
+}
+
+function manufacturers() {
+    $("#cars").hide();
+    $("#manufacturers").hide();
+    $("#index").hide();
+    $("#addCarsForm").hide();
+    $("#addManufacturerForm").hide();
+    $("#manufacturer").hide();
+    $.getJSON('manufacturers', function (data) {
+        var table = $('<table id="manufacturersData"></table>');
+        var thead = $("<thead></thead>");
+        var tbody = $("<tbody></tbody>");
+        var title = $("<tr><th colspan='10'>Manufacturers</th></tr>");
+        var head = $("<th>Name</th><th>Country</th><th>Founded</th>");
+        thead.append(title);
+        thead.append(head);
+        $.each(data, function (key, value) {
+            var line = $('<tr></tr>');
+            var nameData = $('<td>' + value.name + '</td>');
+            var countryData = $('<td>' + value.country + '</td>');
+            var foundedData = $('<td>' + value.founded + '</td>');
+            line.append(nameData);
+            line.append(countryData);
+            line.append(foundedData);
+            tbody.append(line);
+        });
+        table.append(thead);
+        table.append(tbody);
+        $("#manufacturers").show().html(table);
+    })
 }
 
 function cars() {
@@ -46,37 +76,6 @@ function cars() {
     })
 }
 
-function manufacturers() {
-    $("#cars").hide();
-    $("#manufacturers").hide();
-    $("#index").hide();
-    $("#addCarsForm").hide();
-    $("#addManufacturerForm").hide();
-    $("#manufacturer").hide();
-    $.getJSON('manufacturers', function (data) {
-        var table = $('<table id="manufacturersData"></table>');
-        var thead = $("<thead></thead>");
-        var tbody = $("<tbody></tbody>");
-        var title = $("<tr><th colspan='10'>Manufacturers</th></tr>");
-        var head = $("<th>Name</th><th>Country</th><th>Founded</th>");
-        thead.append(title);
-        thead.append(head);
-        $.each(data, function (key, value) {
-            var line = $('<tr></tr>');
-            var nameData = $('<td>' + value.name + '</td>');
-            var countryData = $('<td>' + value.country + '</td>');
-            var foundedData = $('<td>' + value.founded + '</td>');
-            line.append(nameData);
-            line.append(countryData);
-            line.append(foundedData);
-            tbody.append(line);
-        });
-        table.append(thead);
-        table.append(tbody);
-        $("#manufacturers").show().html(table);
-    })
-}
-
 function addCar() {
     $("#cars").hide();
     $("#manufacturers").hide();
@@ -84,13 +83,11 @@ function addCar() {
     $("#addManufacturerForm").hide();
     $("#manufacturer").hide();
     $("#addCarsForm").on("submit", function (event) { event.preventDefault();
-
         $.post("/addCar", {"name": $("#carName").val(), "consumption": $("#carConsumption").val(), "color": $("#carColor").val(), "manufacturer": $("#carManufacturer").val(),"available": $("#carAvailable").val(), "year": $("#carYear").val(), "horsepower": $("#carHorsepower").val()}
         , function () {alert("Sikeres a hozzáadás!");
-        }).fail(function () {alert("Sikertelen!");
+        }).fail(function () {alert("Hiba!");
         });
     });
-
     $.get("/manufacturerNames", function (names) { names.forEach(function (name) {
         $("#carManufacturer").append('<option value="' +  name + '">' + name + '</option>');
     });
@@ -106,16 +103,11 @@ function addManufacturer() {
     $("#index").hide();
     $("#addCarsForm").hide();
     $("#manufacturer").hide();
-    $('#addManufacturerForm').on('submit', function (event) {
-        event.preventDefault();
-
-        var name = $("#manufacturerName").val();
-        var country = $("#manufacturerCountry").val();
-        var founded = $("#manufacturerFounded").val();
-
-        $.post("/addManufacturers", {name: name, country: country, founded: founded}
-            , function(){alert("Hozzáadás sikeres!");
-            }).fail(function() {alert("Hiba!");});
+    $('#addManufacturerForm').on('submit', function (event) {event.preventDefault();
+        $.post("/addManufacturers", {"name": $("#manufacturerName").val(), "country": $("#manufacturerCountry").val(), "founded": $("#manufacturerFounded").val(), "manufacturer": $("#carManufacturer").val(),"available": $("#carAvailable").val()}
+            , function () {alert("Sikeres a hozzáadás!");
+            }).fail(function () {alert("Hiba!");
+        });
     });
     $("#addManufacturerForm").show();
     document.getElementById("addManufacturerForm()").reset();
@@ -168,7 +160,7 @@ function loadCarsByManufacturer() {
         var table = $('<table id="byManufacturerTable"></table>');
         var thead = $("<thead></thead>");
         var tbody = $("<tbody></tbody>");
-        var title = $("<tr><th colspan='7'>Cars By Manufacturer</th></tr>");
+        var title = $("<tr><th colspan='7'>Cars Of Manufacturer</th></tr>");
         var head = $("<tr><th>Name</th><th>Consumption</th><th>Color</th><th>Manufacturer</th><th>Available</th><th>Year</th><th>Horsepower</th></tr>");
         thead.append(title);
         thead.append(head);
